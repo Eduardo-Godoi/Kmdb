@@ -2,6 +2,13 @@
 
 O KMDb é uma plataforma de cadastro e reviews de filmes, semelhante ao IMDb.
 
+KMDb terá um ou mais admins que ficarão responsáveis pelo cadastro dos filmes, um ou mais críticos/revisores que irão escrever avaliações para os filmes cadastrados e usuários "comuns" que poderão escrever comentários sobre os filmes.
+
+- Admin - será responsável por criar e deletar os filmes na plataforma.
+- Crítico - não poderão criar ou deletar filmes, mas sim criar as avaliações para eles.
+- Usuários - podem somente adicionar quantos comentários quiserem aos
+  Cada crítico só poderá fazer uma crítica por filme. Caso necessário, poderão editá-las, mas nunca criar mais de uma.
+
 # Este passo é para baixar o projeto
 
 `git clone https://gitlab.com/carlosbentz/kmdb`
