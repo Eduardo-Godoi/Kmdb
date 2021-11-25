@@ -1,0 +1,111 @@
+Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+Operations to perform:
+  Synchronize unmigrated apps: messages, rest_framework, staticfiles
+  Apply all migrations: accounts, admin, auth, authtoken, contenttypes, movies, sessions
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0001_initial... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying accounts.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying authtoken.0001_initial... OK
+  Applying authtoken.0002_auto_20160226_1747... OK
+  Applying authtoken.0003_tokenproxy... OK
+  Applying movies.0001_initial... OK
+  Applying sessions.0001_initial... OK
+[<URLPattern '^movies/$' [name='movie-list']>, <URLPattern '^movies/(?P<pk>[^/.]+)/$' [name='movie-detail']>, <URLPattern '^movies/(?P<pk>[^/.]+)/review/$' [name='movie-create-review']>, <URLPattern '^reviews/$' [name='review-list']>]
+System check identified no issues (0 silenced).
+test_user_fields (accounts.test.tests_model.UserModelTest) ... ok
+test_login_superuser_error (accounts.test.tests_view.LoginTest) ... ok
+test_login_superuser_success (accounts.test.tests_view.LoginTest) ... ok
+test_created_critic_user_success (accounts.test.tests_view.UserAccountTest) ... ok
+test_created_superuser_fail (accounts.test.tests_view.UserAccountTest) ... ok
+test_created_superuser_success (accounts.test.tests_view.UserAccountTest) ... ok
+test_created_user_success (accounts.test.tests_view.UserAccountTest) ... ok
+test_admin_can_view_all_reviews (movies.test.tests_view.TestListReview) ... ok
+test_anonymous_cannot_view_reviews (movies.test.tests_view.TestListReview) ... ok
+test_critic_can_view_only_own_reviews (movies.test.tests_view.TestListReview) ... ok
+test_user_cannot_view_reviews (movies.test.tests_view.TestListReview) ... ok
+test_admin_can_create_movie (movies.test.tests_view.TestMovieView) ... ok
+test_anonymous_can_list_movies (movies.test.tests_view.TestMovieView) ... ok
+test_anonymous_cannot_create_movie (movies.test.tests_view.TestMovieView) ... ok
+test_critic_cannot_create_movie (movies.test.tests_view.TestMovieView) ... ok
+test_filter_movies_with_the_filter_request (movies.test.tests_view.TestMovieView) ... ok
+test_output_format_data (movies.test.tests_view.TestMovieView) ... ok
+test_user_cannot_create_movie (movies.test.tests_view.TestMovieView) ... ok
+test_admin_can_delete_movie (movies.test.tests_view.TestMovieViewByIdGetDelete) ... ok
+test_anonymous_can_filter_movies (movies.test.tests_view.TestMovieViewByIdGetDelete) ... ok
+test_anonymous_cannot_filter_movies_with_the_invalid_movie_id (movies.test.tests_view.TestMovieViewByIdGetDelete) ... ok
+test_critic_cannot_delete_movies (movies.test.tests_view.TestMovieViewByIdGetDelete) ... ok
+test_user_cannot_delete_movies (movies.test.tests_view.TestMovieViewByIdGetDelete) ... ok
+test_admin_cannot_create_review (movies.test.tests_view.TestReviewView) ... ok
+test_create_review_without_movie (movies.test.tests_view.TestReviewView) ... ok
+test_critic_can_create_review (movies.test.tests_view.TestReviewView) ... ok
+test_critic_can_update_review_sucess (movies.test.tests_view.TestReviewView) ... ok
+test_update_review_that_doesnt_exist (movies.test.tests_view.TestReviewView) ... ok
+test_update_review_unexisting_movie (movies.test.tests_view.TestReviewView) ... ok
+test_user_cannot_create_review (movies.test.tests_view.TestReviewView) ... ok
+test_create_and_login_for_admin_account (test_api.TestAccountView) ... ok
+test_create_and_login_for_critic_account (test_api.TestAccountView) ... ok
+test_create_and_login_for_user_account (test_api.TestAccountView) ... ok
+test_create_user_already_exists (test_api.TestAccountView) ... ok
+test_login_non_existing_user (test_api.TestAccountView) ... ok
+test_missing_login_data (test_api.TestAccountView) ... ok
+test_wrong_credentials_do_not_login (test_api.TestAccountView) ... ok
+test_admin_cannot_create_review (test_api.TestCriticismReviewView) ... ok
+test_admin_cannot_update_review (test_api.TestCriticismReviewView) ... ok
+test_cannot_create_review_with_invalid_stars (test_api.TestCriticismReviewView) ... ok
+test_create_review_without_movie (test_api.TestCriticismReviewView) ... ok
+test_critic_can_create_review (test_api.TestCriticismReviewView) ... ok
+test_critic_can_update_review (test_api.TestCriticismReviewView) ... ok
+test_critic_cannot_duplicate_review (test_api.TestCriticismReviewView) ... ok
+test_update_review_from_unexisting_movie (test_api.TestCriticismReviewView) ... ok
+test_update_review_that_doesnt_exist (test_api.TestCriticismReviewView) ... ok
+test_user_cannot_create_review (test_api.TestCriticismReviewView) ... ok
+test_user_cannot_update_review (test_api.TestCriticismReviewView) ... ok
+test_admin_can_view_all_reviews (test_api.TestListReview) ... ok
+test_anonymous_cannot_view_reviews (test_api.TestListReview) ... ok
+test_critic_can_view_only_own_reviews (test_api.TestListReview) ... ok
+test_user_cannot_view_reviews (test_api.TestListReview) ... ok
+test_admin_can_delete_movie (test_api.TestMovieRetrieveDestroyView) ... ok
+test_anonymous_can_filter_movies (test_api.TestMovieRetrieveDestroyView) ... ok
+test_anonymous_cannot_delete_movies (test_api.TestMovieRetrieveDestroyView) ... ok
+test_anonymous_cannot_filter_movies_with_the_invalid_movie_id (test_api.TestMovieRetrieveDestroyView) ... ok
+test_anonymous_filter_movie_without_critic (test_api.TestMovieRetrieveDestroyView) ... ok
+test_critic_cannot_delete_movies (test_api.TestMovieRetrieveDestroyView) ... ok
+test_user_cannot_delete_movies (test_api.TestMovieRetrieveDestroyView) ... ok
+test_user_filter_movie_with_critic (test_api.TestMovieRetrieveDestroyView) ... ok
+test_admin_can_create_movie (test_api.TestMovieView) ... ok
+test_anonymous_can_list_movies (test_api.TestMovieView) ... ok
+test_anonymous_cannot_create_movie (test_api.TestMovieView) ... ok
+test_anonymous_cannot_update_movie (test_api.TestMovieView) ... ok
+test_critic_cannot_create_movie (test_api.TestMovieView) ... ok
+test_critic_cannot_update_movie (test_api.TestMovieView) ... ok
+test_filter_movies_with_the_filter_request (test_api.TestMovieView) ... ok
+test_genre_cannot_repeat (test_api.TestMovieView) ... ok
+test_only_admin_can_update_movie (test_api.TestMovieView) ... ok
+test_output_format_data (test_api.TestMovieView) ... ok
+test_user_cannot_create_movie (test_api.TestMovieView) ... ok
+test_user_cannot_update_movie (test_api.TestMovieView) ... ok
+
+----------------------------------------------------------------------
+Ran 72 tests in 34.957s
+
+OK
+Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
