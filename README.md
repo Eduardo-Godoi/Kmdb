@@ -1,17 +1,19 @@
 # KMDb
 
-O KMDb é uma plataforma de cadastro e reviews de filmes, semelhante ao IMDb.
+KMDb é uma plataforma para amantes de filmes. A plataforma possui cadastros para filmes e suas sinopses, análises e comentários. A aplicação possui 3 tipos de usuários. O token identifica qual é o tipo de usuário, garantindo suas respectivas permissões dentro da plataforma. São eles:
 
-KMDb terá um ou mais admins que ficarão responsáveis pelo cadastro dos filmes, um ou mais críticos/revisores que irão escrever avaliações para os filmes cadastrados e usuários "comuns" que poderão escrever comentários sobre os filmes.
+Administradores poderão cadastrar filmes para que críticos possam avaliar e usuários possam comentar.
+Críticos podem analisar filmes. Também é possível fazer a edição da análise.
+Usuários podem fazer comentários sobre os filmes.
+Para visualizar os filmes (rota GET), não é preciso ter cadastro na plataforma.
 
-- Admin - será responsável por criar e deletar os filmes na plataforma.
-- Crítico - não poderão criar ou deletar filmes, mas sim criar as avaliações para eles.
-- Usuários - podem somente adicionar quantos comentários quiserem aos
-  Cada crítico só poderá fazer uma crítica por filme. Caso necessário, poderão editá-las, mas nunca criar mais de uma.
+As rotas devem ser utilizadas como prefixo http://127.0.0.1:8000/
+
+Exemplo, a rota que cria usuários, será http://127.0.0.1:8000/api/accounts
 
 # Este passo é para baixar o projeto
 
-`git clone https://gitlab.com/carlosbentz/kmdb`
+`git clone https://gitlab.com/eduardogodoi/kmdb-remake`
 
 ## Entrar na pasta
 
@@ -587,4 +589,4 @@ Nesse caso, apenas as críticas do crítico Bruce Wayne foram listadas.
 
 - Django
 - Django Rest Framework
-- PostgreSQL
+- SQLITE
