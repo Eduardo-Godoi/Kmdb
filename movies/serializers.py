@@ -1,5 +1,7 @@
 from accounts.serializers import CriticSerializer
+from django.shortcuts import get_object_or_404
 from rest_framework import serializers
+from rest_framework.response import Response
 
 from .models import Genre, Movie, Review
 

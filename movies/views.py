@@ -1,12 +1,13 @@
 
 from django.shortcuts import get_object_or_404
-from rest_framework import status, viewsets
+from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import (IsAuthenticated,
                                         IsAuthenticatedOrReadOnly)
 from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
 
 from movies.permissions import OnlyAdmin, OnlyCritico
 
@@ -15,26 +16,16 @@ from .serializers import (CreateReviewSerializer, MovieDetailSerializer,
                           MovieSerializer, ReviewSerializer)
 
 
-class MovieViews(viewsets.ViewSet):
+class MovieViews(ModelViewSet):
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
     permission_classes = [IsAuthenticatedOrReadOnly, OnlyAdmin]
     authentication_classes = [TokenAuthentication]
 
-    def create(self, request):
-        serialized = MovieSerializer(data=request.data)
-        serialized.is_valid(raise_exception=True)
-        serialized.save()
-        return Response(serialized.data, status=status.HTTP_201_CREATED)
-
-    def list(self, request, *args, **kwargs):
+    def filter_queryset(self, queryset):
         if 'title' in self.request.GET:
-            movies = Movie.objects.filter(title__contains=self.request.GET['title'])
-            serialized = MovieSerializer(movies, many=True)
-            return Response(serialized.data)
-        movies = Movie.objects.all()
-        serialized = MovieSerializer(movies, many=True)
-        return Response(serialized.data)
+            return queryset.filter(title__contains=self.request.GET['title'])
+        return queryset
 
     def retrieve(self, request, *args, **kwargs):
         user = self.request.user
@@ -45,22 +36,6 @@ class MovieViews(viewsets.ViewSet):
             return Response(serialized.data)
         serialized_detail = MovieDetailSerializer(movie)
         return Response(serialized_detail.data)
-
-    def update(self, request,  *args, **kwargs):
-        movie = get_object_or_404(Movie, id=kwargs.get('pk'))
-        serialized = MovieDetailSerializer(movie, data=request.data)
-        serialized.is_valid(raise_exception=True)
-
-        serialized.save()
-
-        return Response(serialized.data)
-
-    def destroy(self, request,  *args, **kwargs):
-        movie = get_object_or_404(Movie, id=kwargs.get('pk'))
-
-        movie.delete()
-
-        return Response(status=status.HTTP_204_NO_CONTENT)
 
     @action(detail=True, methods=['post', 'put'], permission_classes=[OnlyCritico],
             serializer_class=CreateReviewSerializer, url_path='review')
@@ -114,7 +89,7 @@ class MovieViews(viewsets.ViewSet):
                                 status=status.HTTP_404_NOT_FOUND)
 
 
-class ListReview(viewsets.ViewSet):
+class ListReview(ModelViewSet):
     authentication_classes = [TokenAuthentication]
     permission_classes = [OnlyCritico]
 

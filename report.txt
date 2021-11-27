@@ -29,7 +29,7 @@ Running migrations:
   Applying authtoken.0003_tokenproxy... OK
   Applying movies.0001_initial... OK
   Applying sessions.0001_initial... OK
-[<URLPattern '^movies/$' [name='movie-list']>, <URLPattern '^movies/(?P<pk>[^/.]+)/$' [name='movie-detail']>, <URLPattern '^movies/(?P<pk>[^/.]+)/review/$' [name='movie-create-review']>, <URLPattern '^reviews/$' [name='review-list']>]
+[<URLPattern '^movies/$' [name='movie-list']>, <URLPattern '^movies/(?P<pk>[^/.]+)/$' [name='movie-detail']>, <URLPattern '^movies/(?P<pk>[^/.]+)/review/$' [name='movie-create-review']>, <URLPattern '^reviews/$' [name='review-list']>, <URLPattern '^reviews/(?P<pk>[^/.]+)/$' [name='review-detail']>]
 System check identified no issues (0 silenced).
 test_user_fields (accounts.test.tests_model.UserModelTest) ... ok
 test_login_superuser_error (accounts.test.tests_view.LoginTest) ... ok
@@ -105,7 +105,7 @@ test_user_cannot_create_movie (test_api.TestMovieView) ... ok
 test_user_cannot_update_movie (test_api.TestMovieView) ... ok
 
 ----------------------------------------------------------------------
-Ran 72 tests in 34.957s
+Ran 72 tests in 34.692s
 
 OK
 Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
